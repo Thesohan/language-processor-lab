@@ -1,0 +1,14 @@
+int 	 keyword 
+main 	 indentifier 
+int 	 keyword 
+a 	 indentifier 
+int 	 keyword 
+b 	 indentifier 
+"%d%d" 	 String 
+scanf 	 keyword 
+ab 	 indentifier 
+"%d" 	 String 
+printf 	 keyword 
++ 	 operator 
+a 	 indentifier 
+b 	 indentifier 

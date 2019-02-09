@@ -2,6 +2,7 @@ production={}#all the productions
 stack=[]#stack used for calculating leading  and trailing
 l={}#it will contain the leading of each nonTerminal
 t={}#it will contain the trailling of each nonTerminal
+startingSymbol=''
 parseTable={}#it is our parseTable , there will be no values for error
 def install_lead(nonTerminal,terminal):
 	# print(terminal)
@@ -119,14 +120,12 @@ def createParseTable():
 			rule1(alter)
 			rule2(alter)
 			rule3(alter)
-			for alphabate in alter:
-				if(alphabate<='Z' and alphabate>='A' and alphabate=='c' and alphabate==')'):
-					continue
-				else:
-					#since $ has fix priority
-					parseTable[alphabate+'$']='>'
-					parseTable['$'+alphabate]='<'
 
+	# for $<leading(startingSymbol) and trailing(startingsymbol)<$
+	for symbol in l[startingSymbol]:
+		parseTable['$'+symbol]='<'
+	for symbol in t[startingSymbol]:
+		parseTable[symbol+'$']='>'
 
 def parseString(input):
 	print("\n")
@@ -171,13 +170,15 @@ n=int(input("enter no. of productions\n"))
 for i in range(n):
 	a,b=list(map(str,input().split("->")));
 	# print(a,b);
+	if(i==0):
+		startingSymbol=a
 	if(production.get(a)==None):
 		production[a]=[b]
 	else:
 		production[a].append(b)
 # print(production)
 leading()
-
+# print(startingSymbol)
 print("leading of each Non terminal is given below")
 for i in l:
 	print(i,"-->",l[i],sep="  ")
